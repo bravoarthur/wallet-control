@@ -1,6 +1,7 @@
 {
   "name": "stock-control-refactored",
   "version": "0.1.0",
+  "homepage": "https://bravoarthur.github.io/gh-wallet-control/",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.9.0",
