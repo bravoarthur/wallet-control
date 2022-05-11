@@ -168,7 +168,7 @@ function SellForm() {
                         <InputLabel htmlFor="sell-stock">Sell Price</InputLabel>
                         <OutlinedInput
                             id="sell-stock"
-                            startAdornment={<InputAdornment position="start">$</InputAdornment>}
+                            startAdornment={<InputAdornment sx={{flexShrink:9}} position="start">$</InputAdornment>}
                             label="Sell Price"
                             size="small"
                             required

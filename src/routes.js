@@ -29,10 +29,10 @@ function AppRouter () {
 
                     <Routes>
 
-                        <Route path='/' element={<UserPage/>}/>
+                        <Route path='/gh-wallet-control/' element={<UserPage/>}/>
 
 
-                        <Route path='/home' element={
+                        <Route path='/gh-wallet-control/home' element={
                             <>
                                 <AddStock/>
                                 <GetPrice/>
@@ -43,9 +43,9 @@ function AppRouter () {
                             </>
                         }/>
                        
-                        <Route path='stock/:id' element={<Stock/>}/>
+                        <Route path='/gh-wallet-control/stock/:id' element={<Stock/>}/>
 
-                        <Route path='*' element={<NotFound/>}/>
+                        <Route path='/gh-wallet-control/*' element={<NotFound/>}/>
                          
 
                     </Routes>

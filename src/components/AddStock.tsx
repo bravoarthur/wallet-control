@@ -80,6 +80,7 @@ function AddStock() {
                     onChange={(event) => setQtd(Number(event.target.value))}
                     />
 
+                
 
                 <FormControl sx={{ m:1 }}>
 
@@ -87,7 +88,7 @@ function AddStock() {
                     <OutlinedInput
                         id="outlined-adornment-amount"
                         value={price === undefined ? '' : price}
-                        startAdornment={<InputAdornment position="start">$</InputAdornment>}
+                        startAdornment={<InputAdornment sx={{flexShrink:9}}position="start">$</InputAdornment>}
                         label="Stock Price"
                         required
                         size="small"
@@ -95,8 +96,9 @@ function AddStock() {
                         onChange={(event) => setPrice(Number(event?.target.value))}                
                     />
                 </FormControl>
-                <Box display={'flex'} alignItems={'center'}
-                >
+                
+
+                <Box display={'flex'} alignItems={'center'}>
                     
                     <Button variant="contained" type="submit"
                     >Add Stock</Button>

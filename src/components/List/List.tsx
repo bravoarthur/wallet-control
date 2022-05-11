@@ -41,7 +41,7 @@ function List (item:IStock) {
     }
 
     const _handleStockPage = () => {
-        navigate(`/stock/${stockName}`)
+        navigate(`/gh-wallet-control/stock/${stockName}`)
     }
 
 

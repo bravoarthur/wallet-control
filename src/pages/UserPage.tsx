@@ -30,7 +30,7 @@ function UserPage() {
 
             <Box>
 
-                <Button variant="outlined"  onClick={() => navigate('/home')} disabled={newLogin.newLogin ? true : false }>
+                <Button variant="outlined"  onClick={() => navigate('/gh-wallet-control/home')} disabled={newLogin.newLogin ? true : false }>
                     Enter
                 </Button>
 

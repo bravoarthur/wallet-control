@@ -16,7 +16,7 @@ function NotFound() {
             <Box display={'flex'} justifyContent={'center'} height={'200px'} alignItems={'center'} flexDirection={'column'}>
 
                 <H1NotFound> PAGE NOT FOUND </H1NotFound>
-                <Button variant="contained" color='primary' onClick={() => navigate('/home')}>
+                <Button variant="contained" color='primary' onClick={() => navigate('/gh-wallet-control/home')}>
                     Home Page
                 </Button>
 

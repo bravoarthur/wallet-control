@@ -46,7 +46,7 @@ function Stock() {
         <Box>
             
             <Box display={'flex'} justifyContent={'center'} margin={'25px'}>
-                <Button variant='outlined' onClick={() => navigate(`/home`)}>Back</Button>
+                <Button variant='outlined' onClick={() => navigate(`/gh-wallet-control/home`)}>Back</Button>
             </Box>
 
             
