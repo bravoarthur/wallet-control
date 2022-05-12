@@ -86,7 +86,8 @@ function Stock() {
                             </Avatar>
                             </ListItemAvatar>
                             <ListItemText primary="Description"
-                            secondaryTypographyProps={{role:'DescriptionP'}} secondary={stock.description ? stock.description : 'Not Informed'} sx={{textAlign:'justify'}}/>
+                            secondaryTypographyProps={{role:'descriptionP'}}
+                             secondary={stock.description ? stock.description : 'Not Informed'} sx={{textAlign:'justify'}}/>
                         </ListItem>
 
                         <ListItem>
@@ -134,7 +135,10 @@ function Stock() {
                                 <BarChartIcon />
                             </Avatar>
                             </ListItemAvatar>
-                            <ListItemText primary="Total invested" secondary={`$ ${stock.avaragePrice && stock.qtdStock ? (stock.avaragePrice * stock.qtdStock).toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2}) : ''}`}/>
+                            <ListItemText 
+                            primary="Total invested" 
+                            secondaryTypographyProps={{role:'totalP'}}
+                            secondary={`$ ${stock.avaragePrice && stock.qtdStock ? (stock.avaragePrice * stock.qtdStock).toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2}) : ''}`}/>
                         </ListItem>
 
                         <ListItem>
@@ -161,7 +165,10 @@ function Stock() {
                                 <SsidChartIcon/>
                             </Avatar>
                             </ListItemAvatar>
-                            <ListItemText primary="Appreciation" secondary={`$ ${appreciation.toFixed(2)}`} />
+                            <ListItemText 
+                            secondaryTypographyProps={{role:'appreciationP'}}
+                            primary="Appreciation" 
+                            secondary={`$ ${appreciation.toFixed(2)}`} />
                         </ListItem>
 
                         <ListItem>

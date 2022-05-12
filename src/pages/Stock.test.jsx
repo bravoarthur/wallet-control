@@ -1,9 +1,7 @@
 import React from "react";
-import {fireEvent, render,  screen} from "@testing-library/react"
-import UserPage from "./UserPage"
-import userEvent from '@testing-library/user-event'
+import {render,  screen} from "@testing-library/react"
 import Stock from "./Stock";
-import { StockListContext, StockListProvider} from "common/context/StockListContext";
+import { StockListContext} from "common/context/StockListContext";
 
 
 const mockedUsedNavigate = jest.fn();
@@ -41,7 +39,7 @@ jest.mock("components/TradeList", () => () => {
   });
 
 describe('Stock Page', () => {
-    it('Company Name ', async () => {
+    it('Shows Company Name, description and Website',  () => {
         
         render(
             <StockListContext.Provider value={{
@@ -53,64 +51,38 @@ describe('Stock Page', () => {
             </StockListContext.Provider>
         )
                 
-        const nameP = await screen.findByRole('nameP').then(resp => resp)
+        const nameP =  screen.getByRole('nameP')
+        const descriptionP =  screen.getByRole('descriptionP')
+        const websiteP =  screen.getByRole('websiteP')
         
-        expect(nameP).toHaveTextContent(stockL[0].companyName)   
+        expect(nameP).toHaveTextContent(stockL[0].companyName)  
+        expect(descriptionP).toHaveTextContent(stockL[0].description)
+        expect(websiteP).toHaveTextContent(stockL[0].webSite) 
                        
     })
-/*
-    it('Go to Next page', () => {
-        render()
 
-       
+    it('Shows correct "Total Invested" and "Appreciation"', () => {
+        render(
+            <StockListContext.Provider value={{
+                stockList: stockL,
+                valuetionPercentYear: jest.fn()
+            }}>
+                <Stock/>
+            </StockListContext.Provider>
+        )
 
+        const totalP =  screen.getByRole('totalP')
+        const appreciationP =  screen.getByRole('appreciationP')
+
+        const totalInvested = stockL[0].avaragePrice * stockL[0].qtdStock    
+        const appreciation = (stockL[0].currentPrice*Number(stockL[0].qtdStock)) - (Number(stockL[0].avaragePrice) * Number(stockL[0].qtdStock))
+        
+        expect(totalP).toHaveTextContent(`$ ${totalInvested.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`)
+
+        expect(appreciationP).toHaveTextContent(`${appreciation.toFixed(2)}`)
 
     })
-*/
+
 })
 
 
-
-/*
-<StockListContext.Provider value={
-                {stockList: [{
-                companyName: 'Company Test',
-                stockName: 'Ticker Test',
-                buyDate: '08/10/1987',
-                qtdStock: 100,
-                avaragePrice: 65.50,
-                currentPrice: 68.50,
-                webSite: 'www.test.com.br',
-                description: 'Company Test SA'       
-            }, {
-                companyName: 'Company Test2',
-                stockName: 'Ticker Test2',
-                buyDate: '08/10/1987',
-                qtdStock: 10,
-                avaragePrice: 5.50,
-                currentPrice: 8.50,
-                webSite: 'www.test2.com.br',
-                description: 'Company Test SA2'       
-            }]}}>
-                <Stock/>
-            </StockListContext.Provider>
-            
-            */
-
-            /*
-            const StockListProvider = ({children}) => (
-    <StockListContext.Provider >
-        {children}
-    </StockListContext.Provider>
-)
-
-const wrapper = ({children}) => (
-    <StockListProvider value={stockL}>{children}</StockListProvider>
-)
-
-
-const mockContext = jest.fn().mockImplementation(() => ({
-    stockList: stockL,
-    valuetionPercentYear: jest.fn()
-}))
-React.useContext = mockContext*/
