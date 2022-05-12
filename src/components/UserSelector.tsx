@@ -3,7 +3,7 @@ import TextField from '@mui/material/TextField';
 import Autocomplete, { createFilterOptions } from '@mui/material/Autocomplete';
 import { UserContext } from 'common/context/UserContext';
 
-const filter = createFilterOptions<UserOptionType>();
+const filterer = createFilterOptions<UserOptionType>();
 
 export default function FreeSoloCreateOption() {
   const [value, setValue] = React.useState<UserOptionType | null>(null);
@@ -36,7 +36,7 @@ export default function FreeSoloCreateOption() {
         }
       }}
       filterOptions={(options, params) => {
-        const filtered = filter(options, params);
+        const filtered = filterer(options, params);
 
         const { inputValue } = params;
         // Suggest the creation of a new value
@@ -54,7 +54,6 @@ export default function FreeSoloCreateOption() {
         return filtered;
       }}
       selectOnFocus
-      handleHomeEndKeys
       id="free-solo-with-text-demo"
       options={userList}
       getOptionLabel={(option) => {

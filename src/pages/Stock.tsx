@@ -63,7 +63,7 @@ function Stock() {
                                 <AccountBalanceIcon />
                             </Avatar>
                             </ListItemAvatar>
-                            <ListItemText primary="Company Name" secondary={stock.companyName? stock.companyName : ''} />
+                            <ListItemText primary="Company Name" secondary={stock.companyName? stock.companyName : ''} role='nameItem' />
                         </ListItem>
                         
                         

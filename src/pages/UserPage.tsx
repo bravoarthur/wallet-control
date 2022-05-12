@@ -11,7 +11,7 @@ function UserPage() {
 
     const navigate = useNavigate()
     const newLogin = useContext(UserContext)
-   
+    
     
     return ( 
         <DivUser>

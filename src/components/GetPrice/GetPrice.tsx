@@ -1,5 +1,4 @@
 import { Button, Container } from "@mui/material";
-import { Box } from "@mui/system";
 import { StockListContext } from "common/context/StockListContext";
 import { useContext } from "react";
 import { IStockList} from 'types/Stock'
