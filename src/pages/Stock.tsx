@@ -63,7 +63,10 @@ function Stock() {
                                 <AccountBalanceIcon />
                             </Avatar>
                             </ListItemAvatar>
-                            <ListItemText primary="Company Name" secondary={stock.companyName? stock.companyName : ''} role='nameItem' />
+                            <ListItemText
+                            primary="Company Name" 
+                            secondaryTypographyProps={{role:'nameP'}}
+                            secondary={stock.companyName? stock.companyName : ''} />
                         </ListItem>
                         
                         
@@ -82,7 +85,8 @@ function Stock() {
                                 <DescriptionIcon/>
                             </Avatar>
                             </ListItemAvatar>
-                            <ListItemText primary="Description" secondary={stock.description ? stock.description : 'Not Informed'} sx={{textAlign:'justify'}}/>
+                            <ListItemText primary="Description"
+                            secondaryTypographyProps={{role:'DescriptionP'}} secondary={stock.description ? stock.description : 'Not Informed'} sx={{textAlign:'justify'}}/>
                         </ListItem>
 
                         <ListItem>
@@ -91,7 +95,9 @@ function Stock() {
                                 <LanguageOutlinedIcon/>
                             </Avatar>
                             </ListItemAvatar>
-                            <ListItemText primary="WebSite" secondary={stock.webSite? stock.webSite : 'Not Informed'} />
+                            <ListItemText primary="WebSite" 
+                             secondaryTypographyProps={{role:'websiteP'}} 
+                             secondary={stock.webSite? stock.webSite : 'Not Informed'} />
                         </ListItem>
 
                         <ListItem>

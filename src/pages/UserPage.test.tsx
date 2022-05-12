@@ -5,12 +5,10 @@ import UserPage from "./UserPage"
 import userEvent from '@testing-library/user-event'
 
 const mockedUsedNavigate = jest.fn();
-        jest.mock('react-router-dom', () => ({
-            ...jest.requireActual('react-router-dom'),
-                useNavigate: () => mockedUsedNavigate,
-        }));
-
-
+jest.mock('react-router-dom', () => ({
+    ...jest.requireActual('react-router-dom'),
+    useNavigate: () => mockedUsedNavigate,
+}));
 
 describe('Set an user', () => {
     it('set a new User Wallet', () => {
