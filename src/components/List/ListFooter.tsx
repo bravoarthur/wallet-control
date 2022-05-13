@@ -1,5 +1,5 @@
 import { IStockList } from "types/Stock";
-import { Td, Th, Tr, TrFooter } from "UI";
+import { Td, Th, TrFooter } from "UI";
 
 
 interface Props {
