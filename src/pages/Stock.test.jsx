@@ -39,7 +39,7 @@ jest.mock("components/TradeList", () => () => {
 
 describe('Stock Page', () => {
     
-    it('Shows Company Name, description and Website',  () => {
+    it('Shows Company Name, description and Website at correct Field',  () => {
         
         render(
             <StockListContext.Provider value={{
