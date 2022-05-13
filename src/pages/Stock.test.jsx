@@ -3,7 +3,6 @@ import {render,  screen} from "@testing-library/react"
 import Stock from "./Stock";
 import { StockListContext} from "common/context/StockListContext";
 
-
 const mockedUsedNavigate = jest.fn();
 //const mockedUsedParams = jest.fn();
 //mockedUsedParams.mockReturnThis({id:'TICKER3'})
@@ -39,6 +38,7 @@ jest.mock("components/TradeList", () => () => {
   });
 
 describe('Stock Page', () => {
+    
     it('Shows Company Name, description and Website',  () => {
         
         render(
@@ -84,5 +84,6 @@ describe('Stock Page', () => {
     })
 
 })
+
 
 
