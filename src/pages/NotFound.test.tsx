@@ -14,6 +14,7 @@ describe('Page Not Found', () => {
     it('Shows Text "Not Found"', () => {
         render(<NotFound/>)
 
+        expect(screen.getByTestId('h1NotFound')).toBeInTheDocument()
 
         
     })

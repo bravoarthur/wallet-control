@@ -38,8 +38,7 @@ function Stock() {
     const appreciationPercent = ((stock.currentPrice / Number(stock.avaragePrice))-1)*100
 
     const appreciation = (stock.currentPrice*Number(stock.qtdStock)) - (Number(stock.avaragePrice) * Number(stock.qtdStock))
-
-    console.log(stock)
+    
 
     return (
 
