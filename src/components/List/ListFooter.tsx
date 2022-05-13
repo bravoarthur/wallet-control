@@ -40,9 +40,9 @@ function ListFooter({children}:Props) {
             <Th>Wallet Valuetion $</Th>
             <Td>$ {currentVerifier ? 0 : walletValuetion.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2})} </Td>
             <Th>Total Invested</Th>
-            <Td>$ {walletInitial.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2})} </Td>
+            <Td role='totalInvested'>$ {walletInitial.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2})} </Td>
             <Th>Wallet current Total</Th>
-            <Td>$ {currentVerifier ? 0 : walletCurrent.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2})} </Td>
+            <Td role='currentTotal'>$ {currentVerifier ? 0 : walletCurrent.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2})} </Td>
 
         </TrFooter>
 

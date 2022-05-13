@@ -47,9 +47,9 @@ function List (item:IStock) {
 
     return (
 
-        <Tr data-testid='trList' delClass={classProp} total={currentPrice===0 ? 0 : lossOrProfit}  key={stockName}>                    
+        <Tr role='trList' delClass={classProp} total={currentPrice===0 ? 0 : lossOrProfit}  key={stockName}>                    
     
-            <TDgo onClick={_handleStockPage}>{stockName}</TDgo>
+            <TDgo role={`tickerField${stockName}`} onClick={_handleStockPage}>{stockName}</TDgo>
             <Td>{buyDate}</Td>
             <Td>{qtdStock}</Td>
             <Td>{avaragePrice?.toFixed(2)}</Td>
