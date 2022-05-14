@@ -30,7 +30,9 @@ const wrapper = (props) => {
         <TradeListContext.Provider value={{
             tradeList: props.tradeList,            
             }}>
-            <TradeList name={props.stockName}/>
+            <TradeList>
+                {props.stockName}
+            </TradeList>
         </TradeListContext.Provider>
     )
 }
@@ -47,4 +49,16 @@ describe('Trade List', () => {
         expect(tradeListItems.length).toBe(mockedTradeList.length)
 
     })
+    it('Shows trades of specific Stock (Stock trade list)', () => {
+        wrapper({
+            tradeList: mockedTradeList,
+            stockName: mockedTradeList[1].stockName
+        })
+        const button = screen.getByText('List of Sold Stocks')
+        fireEvent.click(button)
+        const tradeListItems = screen.getAllByRole('trade-list-item')
+        expect(tradeListItems.length).toBe(mockedTradeList.length-1)
+
+    })
+    
 })
