@@ -9,7 +9,7 @@ import Api from "./Api";
 
 function GetPrice() {
 
-    const {stockList, saveList} = useContext(StockListContext)
+    const {stockList, saveList, handleSnackBar} = useContext(StockListContext)
 
     
     function getPricesApi() {
@@ -53,6 +53,7 @@ function GetPrice() {
         .then(resp => {
            
             saveList(resp as IStockList)
+            handleSnackBar({status: true, severity: 'info', text: `Prices have Been Refreshed`})
             //estou dizendo para o TS que esse unknown sera ISTOCKLIST a forca
         })
     }
