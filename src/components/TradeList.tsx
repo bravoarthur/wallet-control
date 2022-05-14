@@ -55,10 +55,7 @@ function TradeList({children}:Props) {
         
         
         <ListItemButton onClick={(event) => handleClick(event)}>
-            <ListItemIcon>
-            
-            </ListItemIcon>
-            
+                        
             <ListItemText>
                 <Box fontWeight={700} fontSize={13}>
 
@@ -87,7 +84,7 @@ function TradeList({children}:Props) {
                         </ListItemIcon>
                         
                         <ListItemText>
-                            <DivTradeList>
+                            <DivTradeList role='trade-list-item'>
 
                                 {`${item.sellDate} - Sold ${item.qtdSold} stocks ${item.stockName} for $${item.sellPrice?.toFixed(2)} | ${item.valuetionPY.toFixed(2)}% | Balance: $ ${item.valuetion.toFixed(2)}`}
                             </DivTradeList>

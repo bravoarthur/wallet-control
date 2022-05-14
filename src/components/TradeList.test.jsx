@@ -1,45 +1,50 @@
 import {fireEvent, render,  screen} from "@testing-library/react"
-import { StockListContext } from "common/context/StockListContext"
-import Home from "./Home"
+import { TradeListContext } from "common/context/TradeListContext"
+import TradeList from "./TradeList"
 
 
-const mockedUsedNavigate = jest.fn();
-jest.mock('react-router-dom', () => ({
-    ...jest.requireActual('react-router-dom'),
-    useNavigate: () => mockedUsedNavigate,
-}));
-
-/*
-jest.mock('components/List/List', () => (jest.requireActual('components/List/List') 
-))*/
-
-const mockedStockList = [{
-    companyName: 'Company Test',
+const mockedTradeList = [{
     stockName: 'TICKER3',
-    buyDate: '08/10/1987',
-    qtdStock: 100,
-    avaragePrice: 65.50,
-    currentPrice: 68.50,
-    webSite: 'www.test.com.br',
-    description: 'Company Test SA'       
+    buyDate: '2021-10-08',
+    sellDate: '2022-08-20',
+    qtdSold: 10,
+    buyPrice: 25.50,
+    sellPrice: 26.50,
+    valuetion: 10,
+    valuetionPercent: 3.92,
+    valuetionPY: 3.92  
 }, {
-    companyName: 'Company Test2',
     stockName: 'TICKER6',
-    buyDate: '08/10/1987',
-    qtdStock: 10,
-    avaragePrice: 5.50,
-    currentPrice: 4.50,
-    webSite: 'www.test2.com.br',
-    description: 'Company Test SA2'       
+    buyDate: '2022-01-20',
+    sellDate: '2022-03-20',
+    qtdSold: 12,
+    buyPrice: 30,
+    sellPrice: 25,
+    valuetion: -60,
+    valuetionPercent: -16.66,
+    valuetionPY: -16.66       
 }]
 
 const wrapper = (props) => {
     render(
-        <StockListContext.Provider value={{
-            stockList: props.stockList,
-            valuetionPercentYear: props.percYear
+        <TradeListContext.Provider value={{
+            tradeList: props.tradeList,            
             }}>
-            <Home/>
-        </StockListContext.Provider>
+            <TradeList name={props.stockName}/>
+        </TradeListContext.Provider>
     )
 }
+
+describe('Trade List', () => {
+    it('Shows all trades when is not receiving Props (home trade list)', () => {
+        wrapper({
+            tradeList: mockedTradeList,
+            stockName: undefined
+        })
+        const button = screen.getByText('List of Sold Stocks')
+        fireEvent.click(button)
+        const tradeListItems = screen.getAllByRole('trade-list-item')
+        expect(tradeListItems.length).toBe(mockedTradeList.length)
+
+    })
+})
