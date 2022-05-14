@@ -43,8 +43,6 @@ function SellForm() {
     
     function newTransaction (verf:number) {
 
-        console.log('vendido')
-
         const newSell = {
 
             stockName: stockList[verf].stockName,
@@ -109,9 +107,6 @@ function SellForm() {
 
     }
     
-    console.log(display)
-    
-
     return ( 
 
         <Container>
@@ -119,7 +114,7 @@ function SellForm() {
             <FormSell hide={display}>
                 <FormAdd onSubmit={
                 (event: any) => {
-                    console.log(event)
+                    
                     event.preventDefault()
                     _handleSell()
                     
