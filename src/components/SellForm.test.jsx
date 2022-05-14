@@ -1,4 +1,4 @@
-import {fireEvent, render,  screen} from "@testing-library/react"
+import {render,  screen} from "@testing-library/react"
 import userEvent from "@testing-library/user-event";
 import { StockListContext } from "common/context/StockListContext"
 import { TradeListContext } from "common/context/TradeListContext";
