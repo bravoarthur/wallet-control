@@ -4,6 +4,17 @@ import { StockListContext } from "common/context/StockListContext"
 import { TradeListContext } from "common/context/TradeListContext";
 import SellForm from "./SellForm";
 
+
+const mockedUsedNavigate = jest.fn();
+jest.mock('react-router-dom', () => ({
+    ...jest.requireActual('react-router-dom'),
+    useNavigate: () => mockedUsedNavigate,
+}));
+
+/*
+jest.mock('components/List/List', () => (jest.requireActual('components/List/List') 
+))*/
+
 const mockedStockList = [{
     companyName: 'Company Test',
     stockName: 'TICKER3',
