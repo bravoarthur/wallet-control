@@ -1,4 +1,4 @@
-Project developed using Functional Components
+Project developed using Functional Components, React Router Dom, Material UI, Styled Components.
 The project is used to make easy to check the evaluation of an investment wallet. You can choose the wallet/user name and check the stock list. Once the button refresh is pressed, it refreshes all the prices getting it at Yahoo Finance. It allows to include new stock, delete if needed and sell them. All the stocks sold generates a list of transactions where you can check the profits.
 It has 8 modules making the code clear and easy to understand
 The Library Material UI has been used to style some modules
