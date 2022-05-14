@@ -130,7 +130,7 @@ function SellForm() {
                     id="input-name-sell-stock"
                     size="small"
                     value={stockName}
-                    onChange={(event) => setStockName(event.target.value)}                
+                    onChange={(event) => setStockName(event.target.value.toUpperCase())}                
                     />
 
                     <TextField

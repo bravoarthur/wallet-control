@@ -51,7 +51,7 @@ function AddStock() {
                     size="small"
                     required
                     variant="outlined" 
-                    onChange={(event) => setName(event.target.value)}
+                    onChange={(event) => setName(event.target.value.toUpperCase())}
                     />
 
                 <TextField 

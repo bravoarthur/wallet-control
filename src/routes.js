@@ -1,6 +1,7 @@
 import { StockListProvider } from 'common/context/StockListContext';
 import { TradeListProvider } from 'common/context/TradeListContext';
 import { UserProvider } from 'common/context/UserContext';
+import CustomizedSnackbars from 'common/SnackBar';
 import AddStock from 'components/AddStock';
 import GetPrice from 'components/GetPrice/GetPrice';
 import SellForm from 'components/SellForm';
@@ -39,6 +40,7 @@ function AppRouter () {
                                 <Home/>
                                 <SellForm/>
                                 <TradeList/>
+                                <CustomizedSnackbars/>
                                 
                             </>
                         }/>

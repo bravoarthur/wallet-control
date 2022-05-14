@@ -1,9 +1,16 @@
 import React, { useContext, useEffect } from 'react';
 import { ReactNode, useState, createContext } from 'react';
 import {IStockAdd, IStockList } from 'types/Stock';
+import { TSnackBar } from 'types/TSnackBar';
 import { TradeListContext } from './TradeListContext';
 import { UserContext } from './UserContext';
 
+
+
+type StockListContextProps ={
+    children: ReactNode
+    //children: JSX.Element
+}
 
 interface StockListProps {
     stockList: IStockList | [],
@@ -12,17 +19,10 @@ interface StockListProps {
     saveList: (newList: IStockList) => void,
     deleteStock: (stockName: string) => void,
     sellStock: (stockName: string, qtdSold: number) =>void,
-    valuetionPercentYear: (date: string, current: number, avarage:number|undefined) => string
-
+    valuetionPercentYear: (date: string, current: number, avarage:number|undefined) => string,
+    handleSnackBar: ({status, severity, text}: TSnackBar) => void,
+    snack: TSnackBar
 }
-
-
-type StockListContextProps ={
-    children: ReactNode
-    //children: JSX.Element
-}
-
-
 
 
 
@@ -36,6 +36,8 @@ export const StockListProvider = ({children}: StockListContextProps) => {
     const {user} = useContext(UserContext)
     const {setTradeList} = useContext(TradeListContext)
     const [stockList, setStockList] = useState<IStockList>([])
+
+    const [snack, setSnack] = useState({status: false, severity:'', text:''})
     
     useEffect(()=> {
 
@@ -43,9 +45,15 @@ export const StockListProvider = ({children}: StockListContextProps) => {
         setTradeList(JSON.parse(`${localStorage.getItem(`${user}TradeList`)}`) || [])
 
 
-    },[user])
+    },[user, setTradeList])
 
-    
+
+
+    function handleSnackBar({status, severity, text}: TSnackBar) {
+
+        setSnack({status, severity, text})
+    }
+
     function addNewStock ({stockName, buyDate, qtdStock, pricePaid}: IStockAdd) {
         
         const verf = stockList.findIndex(item => item.stockName === stockName) 
@@ -63,6 +71,7 @@ export const StockListProvider = ({children}: StockListContextProps) => {
                 description: '',       
             }
             saveList([...stockList, newStock])
+            handleSnackBar({status: true, severity: 'success', text: `New Stock ${stockName} Added Successfully`})
                        
         } else {
 
@@ -87,7 +96,7 @@ export const StockListProvider = ({children}: StockListContextProps) => {
                 }
 
             }))
-
+            handleSnackBar({status: true, severity: 'success', text: `${qtdStock} new ${stockName} Stock ${qtdStock! > 1 ? 'have' : 'has'} been Added Successfully`})
         }
                 
     }
@@ -98,10 +107,11 @@ export const StockListProvider = ({children}: StockListContextProps) => {
 
         if ((stockList[verf].qtdStock as number - qtdSold) === 0) {
 
-            saveList(stockList.filter(item => {
-                return item.stockName!==stockName 
             
+            saveList(stockList.filter(item => {
+                return item.stockName!==stockName             
             }))
+            handleSnackBar({status: true, severity: 'success', text: `All Stocks ${stockName} has been Sold!`})
 
         } else {
 
@@ -123,13 +133,11 @@ export const StockListProvider = ({children}: StockListContextProps) => {
                     return item
                 }
             }))
+            handleSnackBar({status: true, severity: 'success', text: `${qtdSold} Stock${qtdSold > 1 ? 's' : ''} ${stockName} ${qtdSold > 1? 'have' : 'has'} been Sold!`})
 
         }
                
     }
-
-
-
 
     function saveList (newList:IStockList) {
         
@@ -140,6 +148,7 @@ export const StockListProvider = ({children}: StockListContextProps) => {
 
     function deleteStock (stockName:string) {
 
+        handleSnackBar({status: true, severity: 'warning', text: `The Stock ${stockName} has been deleted!!`})
         saveList(stockList.filter(item => {
                 return item.stockName!==stockName 
             
@@ -166,7 +175,7 @@ export const StockListProvider = ({children}: StockListContextProps) => {
 
     return(
 
-        <StockListContext.Provider value={{stockList, setStockList, addNewStock, saveList, deleteStock, sellStock, valuetionPercentYear}}>
+        <StockListContext.Provider value={{stockList, setStockList, addNewStock, saveList, deleteStock, sellStock, valuetionPercentYear, handleSnackBar, snack}}>
             {children}
         </StockListContext.Provider> 
     )
@@ -174,26 +183,3 @@ export const StockListProvider = ({children}: StockListContextProps) => {
 }
 
 
-
-/*
-[{stockName: "VALE3",
-    buyDate: '12/12/12',
-    qtdStock: 25,
-    avaragePrice: 25.50,
-    currentPrice: 30}
-    ,{
-    stockName: 'PETR3',
-    buyDate: `11/11/11`,
-    qtdStock: 70,
-    avaragePrice: 24.25,
-    currentPrice: 0
-},
-{
-    stockName: 'TIMS3',
-    buyDate: `11/11/11`,
-    qtdStock: 70,
-    avaragePrice: 24.25,
-    currentPrice: 0
-}]
-
-*/

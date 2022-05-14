@@ -28,8 +28,7 @@ function TradeList({children}:Props) {
   const {tradeList} = useContext(TradeListContext)
   const [open, setOpen] = React.useState(false);
   const list = children? tradeList.filter(item => item.stockName===children) : tradeList
-  console.log(children)
-     
+       
   const handleClick = (event:Tclick) => {
     setOpen(!open);
     const foco = event.currentTarget

@@ -21,14 +21,13 @@ export interface IStockAdd {
 }
 
 
+export interface IStockList extends Array<IStock> {
+        
+}
+
+
 /*
 export interface IStockList {
     list: IStock[]
 }
 */
-
-
-export interface IStockList extends Array<IStock> {
-    
-   
-}
