@@ -44,7 +44,7 @@ function AddStock() {
                 }}>
 
                 <TextField 
-                    id="outlined-basic" 
+                    id="name-outlined-basic" 
                     label="Ticker Name" 
                     value={name} 
                     sx={{ m:1 }}
@@ -55,8 +55,8 @@ function AddStock() {
                     />
 
                 <TextField 
-                    id="outlined-basic" 
-                    label="Date" 
+                    id="date-outlined-basic" 
+                    label="Buy Date" 
                     size="small"
                     required
                     type='date'
