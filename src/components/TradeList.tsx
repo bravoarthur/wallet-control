@@ -119,8 +119,6 @@ function TradeList({children}:Props) {
                         </ListItemIcon>
                     </ListItemButton>
 
-
-
             </List>
         </Collapse>
         </List>
