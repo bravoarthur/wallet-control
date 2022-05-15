@@ -1,10 +1,9 @@
-
-import {  Container } from '@mui/material';
-import { StockListContext } from 'common/context/StockListContext';
-import List from 'components/List/List';
-import ListFooter from 'components/List/ListFooter';
-import { useContext } from 'react';
-import { Table, Th, Tr } from 'UI';
+import { Container } from "@mui/material";
+import { StockListContext } from "common/context/StockListContext";
+import List from "components/List/List";
+import ListFooter from "components/List/ListFooter";
+import { useContext } from "react";
+import { Table, Th, Tr } from "UI";
 
 /*
 interface PropsContext {
@@ -17,24 +16,14 @@ interface PropsContext {
 }*/
 
 function Home() {
+    const { stockList } = useContext(StockListContext);
 
-    const {stockList} = useContext(StockListContext)
-
-   
-    return (  
-
+    return (
         <div>
-
             <Container>
-
-
                 <Table>
-
                     <thead>
-
-                        
                         <Tr className="header">
-
                             <Th>Ticker</Th>
                             <Th>Buy Date</Th>
                             <Th>Qtd Units</Th>
@@ -45,40 +34,21 @@ function Home() {
                             <Th>Variation % a.a</Th>
                             <Th>Delete</Th>
                             <Th>Sell Stocks</Th>
-
                         </Tr>
-
                     </thead>
 
-
-
                     <tbody>
-                        
-                        {stockList.map(item => {
-
-                            return (
-                                <List key={item.stockName} {...item} />
-                            )                           
+                        {stockList.map((item) => {
+                            return <List key={item.stockName} {...item} />;
                         })}
-
                     </tbody>
-                
 
                     <tfoot>
-
-                        <ListFooter >
-                            {stockList}   
-                        </ListFooter>
-
+                        <ListFooter>{stockList}</ListFooter>
                     </tfoot>
-
                 </Table>
-
             </Container>
-   
-
         </div>
-
     );
 }
 

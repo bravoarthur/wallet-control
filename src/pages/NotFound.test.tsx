@@ -1,29 +1,23 @@
-import {fireEvent, render,  screen} from "@testing-library/react"
-import NotFound from "./NotFound"
-
-
+import { fireEvent, render, screen } from "@testing-library/react";
+import NotFound from "./NotFound";
 
 const mockedUsedNavigate = jest.fn();
-jest.mock('react-router-dom', () => ({
-    ...jest.requireActual('react-router-dom'),
-    useNavigate: () => mockedUsedNavigate,
+jest.mock("react-router-dom", () => ({
+    ...jest.requireActual("react-router-dom"),
+    useNavigate: () => mockedUsedNavigate
 }));
 
-
-describe('Page Not Found', () => {
+describe("Page Not Found", () => {
     it('Shows Text "Not Found"', () => {
-        render(<NotFound/>)
+        render(<NotFound />);
 
-        expect(screen.getByTestId('h1NotFound')).toBeInTheDocument()        
-    })
+        expect(screen.getByTestId("h1NotFound")).toBeInTheDocument();
+    });
     test('Function "back home" is called when click button', () => {
+        render(<NotFound />);
+        const button = screen.getByText("Home Page");
+        fireEvent.click(button);
 
-        render(<NotFound/>)
-        const button = screen.getByText('Home Page')
-        fireEvent.click(button)
-        
-        expect(mockedUsedNavigate).toHaveBeenCalled()
-
-    })
-
-})
+        expect(mockedUsedNavigate).toHaveBeenCalled();
+    });
+});
