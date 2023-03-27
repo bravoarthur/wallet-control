@@ -221,3 +221,4 @@ export const StockListProvider = ({ children }: StockListContextProps) => {
         </StockListContext.Provider>
     );
 };
+

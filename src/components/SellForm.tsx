@@ -86,8 +86,7 @@ function SellForm() {
             const errName = {
                 class: true,
                 message: "This Stock is not in the Wallet"
-            };
-            console.log("Nome Nao Existe");
+            };            
             setError(errName);
         } else {
             //exclamacao ao fim obriga o Typescript a aceitar

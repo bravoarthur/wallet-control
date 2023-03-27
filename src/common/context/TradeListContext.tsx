@@ -57,3 +57,4 @@ export const TradeListProvider = ({ children }: TradeListContextProps) => {
         </TradeListContext.Provider>
     );
 };
+

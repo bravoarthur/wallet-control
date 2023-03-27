@@ -2,7 +2,7 @@ import { IStock } from "types/Stock";
 import { Td, TDgo, Tr } from "UI";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import CurrencyExchangeIcon from "@mui/icons-material/CurrencyExchange";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { StockListContext } from "common/context/StockListContext";
 import { TradeListContext } from "common/context/TradeListContext";
 import { useNavigate } from "react-router-dom";

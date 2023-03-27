@@ -52,3 +52,4 @@ export const UserProvider = ({ children }: UserContextProps) => {
         </UserContext.Provider>
     );
 };
+
